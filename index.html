@@ -88,4 +88,469 @@
                 <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center mx-auto text-2xl">
                     <i class="fas fa-search"></i>
                 </div>
-                <h3 class="text-2xl font-bold">تتبع حالة جهازك بالم
+                <h3 class="text-2xl font-bold">تتبع حالة جهازك بالمحل</h3>
+                <p class="text-gray-500 dark:text-gray-400 text-sm">ادخل رقم الفاتورة أو التذكرة (مثل: #SAAD-1001) للتعرف على المرحلة الحالية لصيانة جهازك</p>
+                
+                <div class="flex gap-2">
+                    <input type="text" id="trackInput" placeholder="أدخل رقم التذكرة هنا..." class="flex-grow px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button onclick="trackDevice()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl shadow transition">بحث</button>
+                </div>
+                
+                <div id="trackResult" class="hidden text-right mt-6 p-5 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 space-y-3">
+                    <!-- Tracking Dynamic Output -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Calculator & Booking -->
+        <section id="calculator" class="bg-white dark:bg-brand-darkCard p-6 md:p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800">
+            <h3 class="text-2xl font-bold mb-6 text-center text-blue-900 dark:text-blue-400">حاسبة التكلفة التقديرية وحجز الصيانة</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold mb-2">نوع الجهاز / الماركة</label>
+                        <select id="calcBrand" onchange="calculateCost()" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 dark:bg-gray-900 focus:ring-2 focus:ring-blue-500">
+                            <option value="iPhone">آيفون (iPhone)</option>
+                            <option value="Samsung">سامسونج (Samsung)</option>
+                            <option value="Xiaomi">شاومي (Xiaomi / Poco)</option>
+                            <option value="Realme/Oppo">أوبو / ريلمي (Oppo / Realme)</option>
+                            <option value="Other">ماركة أخرى</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2">نوع العطل أو الخدمة المطلوب صيانة</label>
+                        <select id="calcIssue" onchange="calculateCost()" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 dark:bg-gray-900 focus:ring-2 focus:ring-blue-500">
+                            <option value="screen" data-cost="750">تغيير شاشة جديدة</option>
+                            <option value="battery" data-cost="400">تغيير بطارية أصلية</option>
+                            <option value="charging" data-cost="250">تصليح سوكيت الشحن</option>
+                            <option value="backglass" data-cost="450">تغيير باغة / ظهر زجاجي</option>
+                            <option value="software" data-cost="150">سوفت وير وفك شفرات</option>
+                            <option value="motherboard" data-cost="900">صيانة بوردة / ماء</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2">اسمك الكريم</label>
+                        <input type="text" id="custName" placeholder="اكتب اسمك هنا" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 dark:bg-gray-900">
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 flex flex-col justify-between space-y-4">
+                    <div>
+                        <span class="text-xs font-bold text-gray-400 block">التكلفة التقديرية (شاملة الصيانة):</span>
+                        <div class="text-4xl font-extrabold text-amber-500 mt-2" id="estimatedPrice">750 ج.م</div>
+                        <p class="text-xs text-gray-500 mt-2">* السعر النهائي يتحدد بدقة بعد فحص الجهاز بالمحل وتحديد حالة قطع الغيار المطلوب تغييرها.</p>
+                    </div>
+                    <button onclick="sendBookingWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        <span>حجز موعد إرسال عبر الواتساب</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Address & Google Map Section -->
+        <section id="location" class="bg-white dark:bg-brand-darkCard p-6 md:p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="space-y-4">
+                    <span class="bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 text-xs px-3 py-1 rounded-full font-bold">موقعنا وساعات العمل</span>
+                    <h3 class="text-2xl font-bold">تفضل بزيارتنا في سعد ستور</h3>
+                    
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-amber-500 text-lg mt-1"></i>
+                            <div>
+                                <strong class="block text-base">العنوان التفصيلي:</strong>
+                                <p class="text-gray-600 dark:text-gray-300">العصافرة قبلي، شارع 45 الرئيسي، ناصية شارع 6، الإسكندرية.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <i class="fab fa-whatsapp text-emerald-500 text-lg mt-1"></i>
+                            <div>
+                                <strong class="block text-base">رقم الهاتف والتواصل:</strong>
+                                <p class="text-gray-600 dark:text-gray-300" dir="ltr">01203906710</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-clock text-blue-500 text-lg mt-1"></i>
+                            <div>
+                                <strong class="block text-base">مواعيد العمل:</strong>
+                                <p class="text-gray-600 dark:text-gray-300">يومياً من 12 ظهراً حتى 11 مساءً (عدا الجمعة من 2 ظهراً).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://maps.google.com/?q=31.265179,30.003784" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-3 rounded-xl transition">
+                        <i class="fas fa-directions"></i>
+                        <span>افتح الموقع في خرائط جوجل</span>
+                    </a>
+                </div>
+
+                <!-- Google Maps Iframe using precise coordinates -->
+                <div class="lg:col-span-2 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 min-h-[300px]">
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; min-height: 320px;" 
+                        loading="lazy" 
+                        allowfullscreen
+                        src="https://maps.google.com/maps?q=31.265179,30.003784&hl=ar&z=17&output=embed">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/201203906710" target="_blank" class="fixed bottom-6 left-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-brand-darkCard border-t border-gray-200 dark:border-gray-800 py-6 text-center text-xs text-gray-500">
+        <p>© 2026 Saad Store - جميع الحقوق محفوظة | تصميم وبرمجة لمحل سعد ستور لصيانة الهواتف الذكية</p>
+    </footer>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white dark:bg-brand-darkCard w-full max-w-4xl rounded-3xl p-6 md:p-8 shadow-2xl border border-gray-200 dark:border-gray-700 max-h-[90vh] overflow-y-auto">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="text-xl font-bold flex items-center gap-2">
+                    <i class="fas fa-user-shield text-amber-500"></i>
+                    <span>لوحة تحكم سعد ستور (صاحب المحل)</span>
+                </h3>
+                <button onclick="closeAdminModal()" class="text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
+            </div>
+
+            <!-- Login View -->
+            <div id="adminLoginView" class="py-8 max-w-sm mx-auto space-y-4">
+                <p class="text-center text-sm text-gray-500">ادخل كلمة المرور للدخول للوحة التحديثات</p>
+                <input type="password" id="adminPassInput" placeholder="كلمة المرور الافتراضية: 1234" class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 dark:bg-gray-900 text-center text-lg">
+                <button onclick="loginAdmin()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl">دخول</button>
+            </div>
+
+            <!-- Dashboard View -->
+            <div id="adminDashboardView" class="hidden space-y-6 pt-4">
+                
+                <!-- Action Tools -->
+                <div class="flex flex-wrap items-center justify-between gap-3 bg-gray-50 dark:bg-gray-900 p-4 rounded-2xl border border-gray-200 dark:border-gray-700">
+                    <button onclick="toggleNewDeviceForm()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
+                        <i class="fas fa-plus"></i>
+                        <span>إضافة جهاز جديد</span>
+                    </button>
+
+                    <button onclick="togglePasswordForm()" class="bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
+                        <i class="fas fa-key"></i>
+                        <span>تغيير كلمة المرور</span>
+                    </button>
+
+                    <button onclick="logoutAdmin()" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>خروج</span>
+                    </button>
+                </div>
+
+                <!-- Password Change Box -->
+                <div id="passwordFormBox" class="hidden p-5 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl space-y-4">
+                    <h4 class="font-bold text-amber-800 dark:text-amber-300 text-sm">🔒 تغيير كلمة مرور لوحة التحكم</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <input type="password" id="oldPass" placeholder="كلمة المرور الحالية" class="px-3 py-2 rounded-xl border text-sm dark:bg-gray-900">
+                        <input type="password" id="newPass" placeholder="كلمة المرور الجديدة" class="px-3 py-2 rounded-xl border text-sm dark:bg-gray-900">
+                        <input type="password" id="confirmPass" placeholder="تأكيد كلمة المرور الجديدة" class="px-3 py-2 rounded-xl border text-sm dark:bg-gray-900">
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="saveNewPassword()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-4 py-2 rounded-xl text-xs">حفظ كلمة المرور</button>
+                        <button onclick="togglePasswordForm()" class="bg-gray-300 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold px-4 py-2 rounded-xl text-xs">إلغاء</button>
+                    </div>
+                </div>
+
+                <!-- New Device Form -->
+                <div id="newDeviceForm" class="hidden p-5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl space-y-4">
+                    <h4 class="font-bold text-sm">تسجيل استلام جهاز جديد لصيانته</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <input type="text" id="newCustName" placeholder="اسم العميل" class="px-3 py-2 rounded-xl border text-sm dark:bg-gray-800">
+                        <input type="text" id="newCustPhone" placeholder="رقم هاتف العميل" class="px-3 py-2 rounded-xl border text-sm dark:bg-gray-800">
+                        <input type="text" id="newDeviceModel" placeholder="نوع الجهاز (مثال: iPhone 11)" class="px-3 py-2 rounded-xl border text-sm dark:bg-gray-800">
+                        <input type="text" id="newIssue" placeholder="المشكلة أو العطل" class="px-3 py-2 rounded-xl border text-sm dark:bg-gray-800">
+                        <input type="number" id="newPrice" placeholder="التكلفة المتفق عليها" class="px-3 py-2 rounded-xl border text-sm dark:bg-gray-800">
+                        <select id="newStatus" class="px-3 py-2 rounded-xl border text-sm dark:bg-gray-800">
+                            <option value="1">تم الاستلام والفحص</option>
+                            <option value="2">جاري الصيانة والإصلاح</option>
+                            <option value="3">جاهز للاستلام</option>
+                            <option value="4">تم التسليم</option>
+                        </select>
+                    </div>
+                    <button onclick="addNewDevice()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow">حفظ واضافة الجهاز</button>
+                </div>
+
+                <!-- Devices List Table -->
+                <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700">
+                    <table class="w-full text-right text-xs">
+                        <thead class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                            <tr>
+                                <th class="p-3">رقم التذكرة</th>
+                                <th class="p-3">اسم العميل</th>
+                                <th class="p-3">الجهاز والعطل</th>
+                                <th class="p-3">الحالة الحالية</th>
+                                <th class="p-3">التكلفة</th>
+                                <th class="p-3">إجراءات والتحديث</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTableBody" class="divide-y divide-gray-200 dark:divide-gray-800">
+                            <!-- Dynamic Content -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Core App Logic -->
+    <script>
+        // Initial Mock Database
+        const defaultDevices = [
+            { id: "#SAAD-1001", name: "أحمد محمود", phone: "01012345678", device: "iPhone 12 Pro", issue: "تغيير شاشة أصلية", price: "1800", status: "2" },
+            { id: "#SAAD-1002", name: "محمد علي", phone: "01287654321", device: "Samsung S21", issue: "تغيير سوكيت شحن", price: "350", status: "3" }
+        ];
+
+        // System Password Management with LocalStorage
+        function getAdminPassword() {
+            return localStorage.getItem("saad_admin_pass") || "1234";
+        }
+
+        function getDevices() {
+            const saved = localStorage.getItem("saad_devices");
+            return saved ? JSON.parse(saved) : defaultDevices;
+        }
+
+        function saveDevices(data) {
+            localStorage.setItem("saad_devices", JSON.stringify(data));
+        }
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('themeIcon');
+            if (document.documentElement.classList.contains('dark')) {
+                icon.className = 'fas fa-sun text-amber-400 text-lg';
+            } else {
+                icon.className = 'fas fa-moon text-lg';
+            }
+        }
+
+        // Price Calculator Function
+        function calculateCost() {
+            const issueSelect = document.getElementById('calcIssue');
+            const selectedOption = issueSelect.options[issueSelect.selectedIndex];
+            const baseCost = selectedOption.getAttribute('data-cost');
+            document.getElementById('estimatedPrice').innerText = baseCost + " ج.م";
+        }
+
+        // Booking Via WhatsApp
+        function sendBookingWhatsApp() {
+            const brand = document.getElementById('calcBrand').value;
+            const issue = document.getElementById('calcIssue').options[document.getElementById('calcIssue').selectedIndex].text;
+            const name = document.getElementById('custName').value || "عميل سعد ستور";
+            const cost = document.getElementById('estimatedPrice').innerText;
+
+            const msg = `مرحباً سعد ستور 👋🏼%0Aأنا: ${name}%0Aعايز أصين جهاز: ${brand}%0Aالعطل: ${issue}%0Aالتكلفة الموضحة بالموقع: ${cost}%0Aمحتاج أحجز موعد للصيانة.`;
+            window.open(`https://wa.me/201203906710?text=${msg}`, '_blank');
+        }
+
+        // Customer Track Functionality
+        function trackDevice() {
+            const query = document.getElementById('trackInput').value.trim();
+            const resultBox = document.getElementById('trackResult');
+            const devices = getDevices();
+            
+            const found = devices.find(d => d.id.toLowerCase() === query.toLowerCase() || d.phone === query);
+
+            resultBox.classList.remove('hidden');
+
+            if (found) {
+                const statusMap = {
+                    "1": { text: "تم الاستلام والفحص الأول", color: "text-amber-500", step: "25%" },
+                    "2": { text: "جاري الصيانة والإصلاح الفني", color: "text-blue-500", step: "50%" },
+                    "3": { text: "جاهز للاستلام بالمحل 🎉", color: "text-emerald-500", step: "75%" },
+                    "4": { text: "تم التسليم للعميل بنجاح ✅", color: "text-gray-500", step: "100%" }
+                };
+
+                const currentStatus = statusMap[found.status];
+
+                resultBox.innerHTML = `
+                    <div class="flex justify-between items-center border-b pb-2 dark:border-gray-700">
+                        <span class="font-bold text-sm">${found.name} (${found.device})</span>
+                        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2.5 py-0.5 rounded-full font-extrabold text-xs">${found.id}</span>
+                    </div>
+                    <p class="text-xs text-gray-500">العطل المسجل: ${found.issue}</p>
+                    <div class="space-y-1">
+                        <span class="text-xs text-gray-400">حالة الطلب الآن:</span>
+                        <div class="font-extrabold text-base ${currentStatus.color}">${currentStatus.text}</div>
+                    </div>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-2">
+                        <div class="bg-blue-600 h-2 rounded-full transition-all duration-500" style="width: ${currentStatus.step}"></div>
+                    </div>
+                `;
+            } else {
+                resultBox.innerHTML = `<p class="text-red-500 text-center font-bold text-sm">عذراً، لم نجد جهازاً برقم التذكرة أو الموبايل المكتوب. يرجى التأكد من الرقم أو التواصل معنا عبر الواتساب.</p>`;
+            }
+        }
+
+        // Admin Modal Controls
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function loginAdmin() {
+            const pass = document.getElementById('adminPassInput').value;
+            if (pass === getAdminPassword()) {
+                document.getElementById('adminLoginView').classList.add('hidden');
+                document.getElementById('adminDashboardView').classList.remove('hidden');
+                renderAdminTable();
+            } else {
+                alert("كلمة المرور غير صحيحة!");
+            }
+        }
+
+        function logoutAdmin() {
+            document.getElementById('adminDashboardView').classList.add('hidden');
+            document.getElementById('adminLoginView').classList.remove('hidden');
+            document.getElementById('adminPassInput').value = "";
+        }
+
+        // Toggle Forms in Admin
+        function toggleNewDeviceForm() {
+            document.getElementById('newDeviceForm').classList.toggle('hidden');
+        }
+
+        function togglePasswordForm() {
+            document.getElementById('passwordFormBox').classList.toggle('hidden');
+        }
+
+        // Save New Password Function
+        function saveNewPassword() {
+            const oldPass = document.getElementById('oldPass').value;
+            const newPass = document.getElementById('newPass').value;
+            const confirmPass = document.getElementById('confirmPass').value;
+
+            if (oldPass !== getAdminPassword()) {
+                alert("كلمة المرور الحالية غير صحيحة!");
+                return;
+            }
+
+            if (!newPass || newPass.length < 3) {
+                alert("يرجى إدخال كلمة مرور جديدة لا تقل عن 3 عناصر!");
+                return;
+            }
+
+            if (newPass !== confirmPass) {
+                alert("كلمة المرور الجديدة وتأكيدها غير متطابقين!");
+                return;
+            }
+
+            localStorage.setItem("saad_admin_pass", newPass);
+            alert("تم تغيير كلمة المرور بنجاح! استخدم كلمة المرور الجديدة في المرات القادمة.");
+            
+            // Reset input fields
+            document.getElementById('oldPass').value = "";
+            document.getElementById('newPass').value = "";
+            document.getElementById('confirmPass').value = "";
+            togglePasswordForm();
+        }
+
+        // Render Admin Table
+        function renderAdminTable() {
+            const tbody = document.getElementById('adminTableBody');
+            const devices = getDevices();
+            tbody.innerHTML = "";
+
+            devices.forEach((dev, index) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-50 dark:hover:bg-gray-800/50";
+                tr.innerHTML = `
+                    <td class="p-3 font-bold text-blue-600">${dev.id}</td>
+                    <td class="p-3">${dev.name}<br><span class="text-gray-400 text-[10px]">${dev.phone}</span></td>
+                    <td class="p-3 font-medium">${dev.device}<br><span class="text-gray-400 text-[10px]">${dev.issue}</span></td>
+                    <td class="p-3">
+                        <select onchange="updateStatus(${index}, this.value)" class="p-1 rounded border dark:bg-gray-900 text-xs">
+                            <option value="1" ${dev.status === "1" ? "selected" : ""}>تم الاستلام</option>
+                            <option value="2" ${dev.status === "2" ? "selected" : ""}>جاري الصيانة</option>
+                            <option value="3" ${dev.status === "3" ? "selected" : ""}>جاهز للاستلام</option>
+                            <option value="4" ${dev.status === "4" ? "selected" : ""}>تم التسليم</option>
+                        </select>
+                    </td>
+                    <td class="p-3 font-bold text-amber-500">${dev.price} ج.م</td>
+                    <td class="p-3 flex gap-2">
+                        <button onclick="notifyWhatsApp('${dev.phone}', '${dev.id}', '${dev.status}')" class="bg-emerald-500 text-white px-2 py-1 rounded hover:bg-emerald-600">
+                            <i class="fab fa-whatsapp"></i> إشعار
+                        </button>
+                        <button onclick="deleteDevice(${index})" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Admin Actions
+        function addNewDevice() {
+            const name = document.getElementById('newCustName').value;
+            const phone = document.getElementById('newCustPhone').value;
+            const model = document.getElementById('newDeviceModel').value;
+            const issue = document.getElementById('newIssue').value;
+            const price = document.getElementById('newPrice').value;
+            const status = document.getElementById('newStatus').value;
+
+            if(!name || !model) {
+                alert("يرجى ملء بيانات اسم العميل والجهاز على الأقل");
+                return;
+            }
+
+            const devices = getDevices();
+            const newId = `#SAAD-${1001 + devices.length}`;
+
+            devices.push({ id: newId, name, phone, device: model, issue, price, status });
+            saveDevices(devices);
+            renderAdminTable();
+            toggleNewDeviceForm();
+        }
+
+        function updateStatus(index, newStatus) {
+            const devices = getDevices();
+            devices[index].status = newStatus;
+            saveDevices(devices);
+        }
+
+        function deleteDevice(index) {
+            if(confirm("هل أنت تأكد من حذف هذا الجهاز؟")) {
+                const devices = getDevices();
+                devices.splice(index, 1);
+                saveDevices(devices);
+                renderAdminTable();
+            }
+        }
+
+        function notifyWhatsApp(phone, id, status) {
+            const statusNames = {
+                "1": "تم استلام جهازك بنجاح وجاري الفحص بالمحل.",
+                "2": "جاري الآن صيانة وإصلاح جهازك.",
+                "3": "جهازك جاهز للاستلام الآن بمحل سعد ستور 🎉",
+                "4": "تم تسليم الجهاز بنجاح. شكراً لثقتكم بنا!"
+            };
+
+            const msg = `مرحباً بك من سعد ستور 👋🏼%0Aتحديث حالة جهازك رقم (${id}):%0A${statusNames[status]}`;
+            window.open(`https://wa.me/2${phone}?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
