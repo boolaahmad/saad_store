@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saad Store | بيع وصيانة موبايلات وساعات ذكية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F4F0;--surface:#FFFFFF;--ink:#0B1220;--muted:#59616B;--line:#D8DBD3;
+  --brand:#2D4BFF;--brand-ink:#FFFFFF;--lime:#C6F432;--lime-ink:#0B1220;--hero:#0B1220;--hero-ink:#F3F4F0;
+  color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1217;--surface:#171C23;--ink:#F1F3EE;--muted:#9BA4AC;--line:#2A3139;--brand:#7B90FF;--brand-ink:#0B1220;--hero:#070B12;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1217;--surface:#171C23;--ink:#F1F3EE;--muted:#9BA4AC;--line:#2A3139;--brand:#7B90FF;--brand-ink:#0B1220;--hero:#070B12;color-scheme:dark}
+*{box-sizing:border-box}
+html{height:100%;scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;line-height:1.8;font-size:17px;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hero);z-index:30}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hero);color:var(--hero-ink)}
+header .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font-weight:700;font-size:22px;text-decoration:none;direction:ltr;display:flex;align-items:center;gap:6px;margin-inline-end:auto}
+.logo b{background:var(--lime);color:var(--lime-ink);padding:0 8px;border-radius:6px}
+nav{display:flex;gap:24px}
+nav a{text-decoration:none;opacity:.8;font-weight:500}
+nav a:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--lime);color:var(--lime-ink);padding:12px 22px;border-radius:12px;text-decoration:none;font:inherit;font-weight:700;border:0;cursor:pointer}
+.btn.blue{background:var(--brand);color:var(--brand-ink)}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+.menu{display:none;background:none;border:1.5px solid rgba(255,255,255,.4);color:inherit;border-radius:10px;width:42px;height:42px;font-size:20px;cursor:pointer}
+@media(max-width:760px){
+  .menu{display:block}.hd-cta{display:none}
+  nav{display:none;position:absolute;top:64px;inset-inline:0;background:var(--hero);flex-direction:column;gap:0;padding:8px 20px 16px;border-top:1px solid rgba(255,255,255,.12)}
+  nav.open{display:flex}nav a{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+}
+
+.hero{background:var(--hero);color:var(--hero-ink);padding:40px 0 64px;overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
+.pill{display:inline-block;background:rgba(198,244,50,.14);color:var(--lime);padding:2px 14px;border-radius:999px;font-size:15px;margin-bottom:14px}
+h1{font-size:clamp(34px,6vw,62px);line-height:1.25;margin:0 0 14px;font-weight:700}
+.lead{opacity:.75;font-size:19px;max-width:36ch;margin:0 0 22px}
+.diag{background:var(--surface);color:var(--ink);border-radius:20px;padding:20px;max-width:520px}
+.diag h2{font-size:19px;margin:0 0 4px}
+.diag small{color:var(--muted)}
+.diag label{display:block;font-weight:500;margin:12px 0 6px;font-size:15px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:inherit;font-size:15px;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;transition:background .15s}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.result{margin:16px 0 12px;padding:12px 14px;border-radius:12px;background:var(--bg);font-size:16px}
+.diag .btn{width:100%}
+
+.phone-box{display:flex;flex-direction:column;align-items:center;gap:16px}
+.phone{width:min(230px,56vw);height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.5))}
+.phone .glow{opacity:0;transition:opacity .7s}
+.phone .crack{stroke:#fff;stroke-width:1.6;fill:none;stroke-linecap:round;opacity:.85;transition:opacity .5s,stroke-dashoffset .8s;stroke-dasharray:260;stroke-dashoffset:0}
+.phone.ok .glow{opacity:1}
+.phone.ok .crack{opacity:0;stroke-dashoffset:260}
+.phone .okmark{opacity:0;transition:opacity .5s .4s}
+.phone.ok .okmark{opacity:1}
+@media(max-width:860px){.hero .grid{grid-template-columns:1fr}.phone-box{order:-1}.phone{width:150px}}
+
+.trust{background:var(--lime);color:var(--lime-ink)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-top:16px;padding-bottom:16px;font-weight:700;font-size:16px}
+.trust span{display:flex;align-items:center;gap:8px}
+@media(max-width:760px){.trust .wrap{grid-template-columns:1fr 1fr;font-size:15px}}
+
+section{padding:60px 0}
+h2.t{font-size:clamp(26px,4vw,38px);margin:0 0 8px;line-height:1.3}
+.sub{color:var(--muted);margin:0 0 28px;max-width:54ch}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card .ic{font-size:34px;line-height:1;margin-bottom:10px}
+.card h3{margin:0 0 6px;font-size:21px}
+.card p{margin:0 0 10px;color:var(--muted);font-size:16px}
+.card ul{margin:0;padding-inline-start:18px;color:var(--muted);font-size:15px}
+.card .btn{margin-top:16px;padding:9px 16px;font-size:15px}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+
+.fix{background:var(--surface);border-block:1px solid var(--line)}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.tile{padding:18px 14px;border-radius:16px;background:var(--bg);border:1px solid var(--line);text-align:center}
+.tile .ic{font-size:30px}.tile b{display:block;margin-top:4px}.tile span{color:var(--muted);font-size:14px;line-height:1.5;display:block}
+@media(max-width:860px){.tiles{grid-template-columns:repeat(2,1fr)}}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;border-top:3px solid var(--ink);padding-top:12px}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-weight:700;margin-bottom:6px}
+.steps b{display:block;font-size:19px}.steps span{color:var(--muted);font-size:16px}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+
+.contact{display:block}
+.contact dl{margin:0}.contact dt{font-weight:700;margin-top:14px}.contact dd{margin:0;color:var(--muted)}
+.map{min-height:230px;border-radius:18px;border:1px dashed var(--line);background:var(--surface);display:grid;place-items:center;color:var(--muted);text-align:center;padding:20px}
+@media(max-width:760px){.contact{grid-template-columns:1fr}}
+footer{background:var(--hero);color:var(--hero-ink);padding:24px 0 90px;font-size:15px;opacity:.95}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.fab{position:fixed;inset-inline-start:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:25;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.phone *{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top"><b>SAAD</b>store</a>
+    <nav id="nav">
+      <a href="#services">الأجهزة</a>
+      <a href="#repair">الصيانة</a>
+      <a href="#how">إزاي بنشتغل</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <a class="btn hd-cta" data-wa="السلام عليكم، عايز أحجز صيانة." href="#contact" target="_blank" rel="noopener">احجز صيانة</a>
+    <button class="menu" id="menu" aria-expanded="false" aria-controls="nav" aria-label="القائمة">☰</button>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero"><div class="wrap grid">
+  <div>
+    <span class="pill">بيع وصيانة في مكان واحد</span>
+    <h1>جهازك عطلان؟ نصلّحه ونرجعهولك بسرعة.</h1>
+    <p class="lead">iPhone وأندرويد وساعات ذكية. اختار جهازك والمشكلة وابعتلنا على واتساب.</p>
+    <div class="diag">
+      <h2>شخّص جهازك</h2>
+      <small>الوقت المتوقع بيظهر فورًا، والسعر بعد الفحص.</small>
+      <label id="l1">نوع الجهاز</label>
+      <div class="chips" role="group" aria-labelledby="l1" id="dev">
+        <button type="button" aria-pressed="true" data-v="iPhone">iPhone</button>
+        <button type="button" aria-pressed="false" data-v="أندرويد">أندرويد</button>
+        <button type="button" aria-pressed="false" data-v="ساعة ذكية">ساعة ذكية</button>
+      </div>
+      <label id="l2">المشكلة</label>
+      <div class="chips" role="group" aria-labelledby="l2" id="prob">
+        <button type="button" aria-pressed="true" data-v="شاشة مكسورة" data-t="نفس اليوم غالبًا">شاشة مكسورة</button>
+        <button type="button" aria-pressed="false" data-v="البطارية بتخلص بسرعة" data-t="خلال ساعة تقريبًا">بطارية</button>
+        <button type="button" aria-pressed="false" data-v="مش بيشحن" data-t="خلال ساعة تقريبًا">مش بيشحن</button>
+        <button type="button" aria-pressed="false" data-v="وقع في مية" data-t="من يوم لـ 3 أيام">مية</button>
+        <button type="button" aria-pressed="false" data-v="بيهنج أو بطيء" data-t="نفس اليوم غالبًا">بطيء</button>
+      </div>
+      <div class="result" id="res" aria-live="polite"></div>
+      <a class="btn blue" id="wa" href="#contact" target="_blank" rel="noopener">ابعت على واتساب</a>
+    </div>
+  </div>
+  <div class="phone-box">
+    <svg class="phone" id="phone" viewBox="0 0 220 420" role="img" aria-label="موبايل بشاشة مكسورة">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2D4BFF"/><stop offset="1" stop-color="#7A2BFF"/></linearGradient></defs>
+      <rect x="6" y="6" width="208" height="408" rx="38" fill="#1B2330" stroke="#3A465A" stroke-width="3"/>
+      <rect x="18" y="18" width="184" height="384" rx="28" fill="#05080D"/>
+      <rect class="glow" x="18" y="18" width="184" height="384" rx="28" fill="url(#g)"/>
+      <rect x="82" y="26" width="56" height="14" rx="7" fill="#05080D"/>
+      <g class="okmark" fill="#fff" text-anchor="middle"><text x="110" y="215" font-size="64">✓</text><text x="110" y="255" font-size="20" font-family="sans-serif">اشتغل تمام</text></g>
+      <path class="crack" d="M150 18 L128 110 L84 150 L92 230 L40 300"/>
+      <path class="crack" d="M128 110 L176 170 L160 260 L200 330"/>
+      <path class="crack" d="M84 150 L30 120 L18 90"/>
+      <path class="crack" d="M92 230 L130 300 L120 402"/>
+    </svg>
+    <button class="btn ghost" type="button" id="fixbtn">جرّب الإصلاح</button>
+  </div>
+</div></div>
+
+<div class="trust"><div class="wrap">
+  <span>✔ فحص مجاني</span><span>✔ السعر قبل الشغل</span><span>✔ ضمان على الصيانة</span><span>✔ بنصلّح قدامك</span>
+</div></div>
+
+<section id="services"><div class="wrap">
+  <h2 class="t">بنبيع ونصلّح الأجهزة دي</h2>
+  <p class="sub">أجهزة جديدة ومستعملة بحالة ممتازة. اسأل على المتاح دلوقتي.</p>
+  <div class="cols">
+    <div class="card"><div class="ic">📱</div><h3>iPhone</h3><p>من الأجيال القديمة لأحدث إصدار.</p>
+      <ul><li>بيع جديد ومستعمل</li><li>شاشة وبطارية وكاميرا</li><li>شحن وسماعة</li></ul>
+      <a class="btn blue" data-wa="السلام عليكم، عايز أعرف الـ iPhone المتاح عندكم." href="#contact" target="_blank" rel="noopener">اسأل على المتاح</a></div>
+    <div class="card"><div class="ic">🤖</div><h3>أندرويد</h3><p>سامسونج وشاومي وأوبو وريلمي وغيرهم.</p>
+      <ul><li>بيع جديد ومستعمل</li><li>شاشة وبطارية</li><li>سوفت وير وفورمات</li></ul>
+      <a class="btn blue" data-wa="السلام عليكم، عايز أعرف موبايلات الأندرويد المتاحة." href="#contact" target="_blank" rel="noopener">اسأل على المتاح</a></div>
+    <div class="card"><div class="ic">⌚</div><h3>ساعات ذكية</h3><p>Apple Watch وساعات أندرويد وإكسسواراتها.</p>
+      <ul><li>بيع وستراب وشواحن</li><li>شاشة وبطارية</li><li>مشاكل الاتصال والشحن</li></ul>
+      <a class="btn blue" data-wa="السلام عليكم، عايز أعرف الساعات الذكية المتاحة." href="#contact" target="_blank" rel="noopener">اسأل على المتاح</a></div>
+  </div>
+</div></section>
+
+<section id="repair" class="fix"><div class="wrap">
+  <h2 class="t">أشهر الأعطال وبنصلّحها إزاي</h2>
+  <p class="sub">بنفحص الجهاز وبنقولك السعر والوقت قبل ما نبدأ.</p>
+  <div class="tiles">
+    <div class="tile"><div class="ic">🪟</div><b>الشاشة</b><span>أصلي أو تجاري، إنت بتختار</span></div>
+    <div class="tile"><div class="ic">🔋</div><b>البطارية</b><span>بطارية جديدة بضمان</span></div>
+    <div class="tile"><div class="ic">🔌</div><b>الشحن</b><span>تنضيف أو تغيير البورت</span></div>
+    <div class="tile"><div class="ic">💧</div><b>الميّة</b><span>فك وتنضيف بسرعة</span></div>
+    <div class="tile"><div class="ic">⚙️</div><b>السوفت وير</b><span>تحديث وفورمات وفك الهنج</span></div>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2 class="t">إزاي بنشتغل</h2>
+  <p class="sub">أربع خطوات من أول ما توصل لحد ما تستلم.</p>
+  <ol class="steps">
+    <li><b>تجيب جهازك</b><span>أو تبعتلنا صورة على واتساب.</span></li>
+    <li><b>فحص مجاني</b><span>بنحدد العطل ونقولك السعر والوقت.</span></li>
+    <li><b>الإصلاح</b><span>بعد موافقتك بس.</span></li>
+    <li><b>تستلم بضمان</b><span>وتجرّب الجهاز قدامنا.</span></li>
+  </ol>
+</div></section>
+
+<section id="contact" class="fix"><div class="wrap contact">
+  <div>
+    <h2 class="t">تعالى زورنا</h2>
+    <dl>
+      <dt>العنوان</dt><dd id="addr">العصافرة قبلي، شارع 45 الرئيسي، ناصية شارع 6</dd>
+      <dt>المواعيد</dt><dd>كل يوم من 10 صباحًا لـ 10 مساءً</dd>
+      <dt>اتصال وواتساب</dt><dd><a id="tel" href="#" dir="ltr">+20 120 390 6710</a></dd>
+    </dl>
+    <p><a class="btn blue" data-wa="السلام عليكم، عايز أستفسر من Saad Store." href="#contact" target="_blank" rel="noopener">كلمنا على واتساب</a></p>
+  </div>
+</div></section>
+</main>
+
+<a class="btn fab" data-wa="السلام عليكم، عايز أستفسر من Saad Store." href="#contact" target="_blank" rel="noopener" aria-label="واتساب">💬 واتساب</a>
+<footer><div class="wrap"><span>© Saad Store</span><span>بيع وصيانة موبايلات وساعات ذكية</span></div></footer>
+
+<script>
+var PHONE="201203906710";            // رقم الواتساب بصيغة دولية بدون +
+var dev="iPhone",prob="شاشة مكسورة",time="نفس اليوم غالبًا";
+function wa(m){return "https://wa.me/"+PHONE+"?text="+encodeURIComponent(m)}
+function render(){
+  document.getElementById("res").innerHTML="<strong>"+dev+" – "+prob+"</strong><br>الوقت المتوقع: "+time;
+  document.getElementById("wa").href=wa("السلام عليكم، عندي "+dev+" والمشكلة: "+prob+". عايز أعرف السعر.");
+}
+function bind(id,fn){
+  var box=document.getElementById(id);
+  box.addEventListener("click",function(e){
+    var b=e.target.closest("button");if(!b)return;
+    box.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed","false")});
+    b.setAttribute("aria-pressed","true");fn(b);render();
+  });
+}
+bind("dev",function(b){dev=b.dataset.v});
+bind("prob",function(b){prob=b.dataset.v;time=b.dataset.t});
+document.querySelectorAll("[data-wa]").forEach(function(a){a.href=wa(a.dataset.wa)});
+document.getElementById("tel").href="tel:+"+PHONE;
+var ph=document.getElementById("phone"),fb=document.getElementById("fixbtn");
+fb.addEventListener("click",function(){
+  var ok=ph.classList.toggle("ok");
+  fb.textContent=ok?"اكسره تاني":"جرّب الإصلاح";
+  ph.setAttribute("aria-label",ok?"موبايل بشاشة سليمة":"موبايل بشاشة مكسورة");
+});
+var menu=document.getElementById("menu"),nav=document.getElementById("nav");
+menu.addEventListener("click",function(){var o=nav.classList.toggle("open");menu.setAttribute("aria-expanded",o)});
+nav.addEventListener("click",function(e){if(e.target.tagName==="A"){nav.classList.remove("open");menu.setAttribute("aria-expanded","false")}});
+render();
+</script>
+</body>
+</html>
