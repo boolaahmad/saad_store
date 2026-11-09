@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سعد ستور | Saad Store - مركز صيانة وتصليح الهواتف الذكية</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            accent: '#f59e0b'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(37, 99, 235, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-600 to-blue-400 flex items-center justify-center text-white shadow-lg text-2xl font-black">
+                        <i class="fa-solid fa-[#mobile-screen-button] fa-mobile-screen"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold text-brand-600 dark:text-blue-400 tracking-tight">سعد ستور</span>
+                        <span class="block text-xs text-slate-500 dark:text-slate-400 font-semibold">SAAD STORE | صيانة واحتراف</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 font-bold text-sm">
+                    <a href="#hero" class="hover:text-brand-600 dark:hover:text-blue-400 transition-colors">الرئيسية</a>
+                    <a href="#services" class="hover:text-brand-600 dark:hover:text-blue-400 transition-colors">خدماتنا</a>
+                    <a href="#estimator" class="hover:text-brand-600 dark:hover:text-blue-400 transition-colors">حجز صيانة وتكلفة</a>
+                    <a href="#tracker" class="hover:text-brand-600 dark:hover:text-blue-400 transition-colors">تتبع جهازك</a>
+                    <a href="#why-us" class="hover:text-brand-600 dark:hover:text-blue-400 transition-colors">لماذا نحن</a>
+                    <a href="#contact" class="hover:text-brand-600 dark:hover:text-blue-400 transition-colors">اتصل بنا</a>
+                </nav>
+
+                <!-- Actions (Theme Toggle & CTA) -->
+                <div class="flex items-center gap-4">
+                    <!-- Theme Switcher -->
+                    <button id="themeToggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                        <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-amber-400 text-lg"></i>
+                    </button>
+
+                    <!-- Header Phone Button -->
+                    <a href="tel:01000000000" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-md shadow-brand-600/30 transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>اتصل بنا فوراً</span>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-4 space-y-3 font-semibold text-right">
+            <a href="#hero" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-600">الرئيسية</a>
+            <a href="#services" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-600">خدماتنا</a>
+            <a href="#estimator" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-600">حجز صيانة وتكلفة</a>
+            <a href="#tracker" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-600">تتبع جهازك</a>
+            <a href="#why-us" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-600">لماذا نحن</a>
+            <a href="#contact" class="block py-2 text-slate-700 dark:text-slate-200 hover:text-brand-600">اتصل بنا</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative overflow-hidden py-16 md:py-24 bg-gradient-to-b from-blue-50/50 via-transparent to-transparent dark:from-slate-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div class="space-y-6 text-center lg:text-right">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100 dark:bg-brand-900/60 text-brand-700 dark:text-brand-300 font-bold text-xs sm:text-sm">
+                        <i class="fa-solid fa-bolt text-brand-accent"></i>
+                        <span>صيانة سريعة خلال 30 دقيقة لغالبية الأعطال</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
+                        تلفونك باظ؟ <br>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-600 via-blue-500 to-cyan-500">سعد ستور</span> يرجعه جديد!
+                    </h1>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+                        مركز متخصص في صيانة وإصلاح كافة أجهزة الأيفون والأندرويد بأعلى دقة، استخدام قطع غيار أصلية 100%، وضمان معتمد على جميع عمليات الإصلاح.
+                    </p>
+
+                    <!-- Hero Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#estimator" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-lg shadow-lg shadow-brand-600/30 transition-all flex items-center justify-center gap-3 transform hover:-translate-y-1">
+                            <i class="fa-solid fa-calculator"></i>
+                            <span>احسب تكلفة الإصلاح واحجز</span>
+                        </a>
+                        <a href="#tracker" class="w-full sm:w-auto px-8 py-4 rounded-xl border-2 border-slate-300 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-500 font-bold text-lg transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>تتبع جهازك بالمحل</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Stats -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-200 dark:border-slate-800 max-w-md mx-auto lg:mx-0">
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-black text-brand-600 dark:text-blue-400">+10,000</span>
+                            <span class="text-xs text-slate-500 font-semibold">جهاز تم إصلاحه</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-black text-brand-600 dark:text-blue-400">100%</span>
+                            <span class="text-xs text-slate-500 font-semibold">قطع أصلية</span>
+                        </div>
+                        <div>
+                            <span class="block text-2xl sm:text-3xl font-black text-brand-600 dark:text-blue-400">3-6 أشهر</span>
+                            <span class="text-xs text-slate-500 font-semibold">ضمان شامل</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Interactive Visual Card -->
+                <div class="relative flex justify-center">
+                    <div class="w-full max-w-md p-6 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-800 relative z-10 glow-effect">
+                        <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4 mb-6">
+                            <div class="flex items-center gap-3">
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span class="font-bold text-sm">حالة مركز الصيانة الآن</span>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-300 text-xs font-bold">مفتوح لاستقبال الأجهزة</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-brand-600 dark:text-blue-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-screwdrivers"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">صيانة الماذر بورد المتقدمة</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">إصلاح أعطال الشحن، IC، والتسريب</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-mobile"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">تغيير شاشات وباغات فوري</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">شاشات أصلية مع الحفاظ على TrueTone</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-battery-full"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">استبدال البطاريات</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">بطاريات فائقة الجودة بنسبة كفاءة 100%</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 p-4 rounded-2xl bg-brand-50 dark:bg-brand-900/30 border border-brand-200 dark:border-brand-800 text-center">
+                            <p class="text-xs text-brand-800 dark:text-brand-200 font-bold mb-1">💡 خصم خاص للعملاء لأول مرة!</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">احجز عبر الموقع واحصل على فحص مجاني شامل لجهازك.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white dark:bg-slate-900 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">خدمات الصيانة الاحترافية</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-lg">نقدم حلولاً متكاملة لكافة مشاكل الهواتف الذكية والأجهزة اللوحية بأحدث الأجهزة والتقنيات.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 text-brand-600 dark:text-blue-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-[#mobile-screen] fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">تغيير الشاشات والباغات</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">استبدال الشاشات التالفة بشاشات أصلية تماماً، أو استبدال الزجاج الخارجي (الباغة) فقط مع الحفاظ على الشاشة الأصلية لتوفير التكلفة.</p>
+                    <span class="text-xs font-bold text-brand-600 dark:text-blue-400">وقت الصيانة: 30 - 45 دقيقة</span>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-battery-three-quarters"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">تغيير البطاريات</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">تركيب بطاريات أصلية مكفولة تضمن لك أطول فترة تشغيل وأعلى مستويات الأمان ومطابقة لمواصفات المصنع.</p>
+                    <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">وقت الصيانة: 20 دقيقة</span>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">صيانة الماذر بورد (Micro-Soldering)</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">إصلاح الأعطال الدقيقة كالمعالج، الشبكة، أيسيات الشحن والإضاءة تحت المجهر الإلكتروني بأيدي مهندسين متخصصين.</p>
+                    <span class="text-xs font-bold text-purple-600 dark:text-purple-400">وقت الصيانة: خلال 24 ساعة</span>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-droplet-slash"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">إصلاح أضرار السوائل</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">تنظيف ومعالجة الهواتف المعرضة للماء أو السوائل باستخدام أجهزة الموجات فوق الصوتية لإزالة الأملاح والرطوبة.</p>
+                    <span class="text-xs font-bold text-amber-600 dark:text-amber-400">فحص فوري ودقيق</span>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-red-500/10 text-red-600 dark:text-red-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">السوفت وير وفك التشفير</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">تحديث الأنظمة، حل مشاكل التعليق والتجهيز، تخطي حسابات iCloud/Google Account بطرق رسمية وآمنة.</p>
+                    <span class="text-xs font-bold text-red-600 dark:text-red-400">دعم كافة الأنظمة</span>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-plug"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">إكسسوارات وقطع غيار</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">نوفر أفضل أنواع الشواحن، الكابلات، الشواحن اللاسلكية، وواقيات الشاشة المعتمدة عالية الجودة.</p>
+                    <span class="text-xs font-bold text-cyan-600 dark:text-cyan-400">أصلية ومضمونة</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Repair Estimator & Booking Form -->
+    <section id="estimator" class="py-20 bg-slate-100 dark:bg-slate-950 transition-colors">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200 dark:border-slate-800">
+                <div class="text-center mb-8">
+                    <span class="px-4 py-1.5 rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 font-bold text-xs">خدمة سريعة ومباشرة</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mt-3">حاسبة التكلفة الفورية وحجز الموعد</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">اختر نوع جهازك والعطل للحصول على سعر تقريبي وحجز موعد صيانة</p>
+                </div>
+
+                <form id="bookingForm" class="space-y-6">
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <!-- Brand Select -->
+                        <div>
+                            <label class="block text-sm font-bold mb-2">الماركة / الشركة</label>
+                            <select id="brandSelect" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-semibold focus:ring-2 focus:ring-brand-500 outline-none transition-all">
+                                <option value="">اختر الماركة...</option>
+                                <option value="apple">آبل (iPhone)</option>
+                                <option value="samsung">سامسونج (Samsung)</option>
+                                <option value="xiaomi">شاومي (Xiaomi)</option>
+                                <option value="huawei">هواوي / أونر</option>
+                                <option value="other">ماركة أخرى</option>
+                            </select>
+                        </div>
+
+                        <!-- Model Select -->
+                        <div>
+                            <label class="block text-sm font-bold mb-2">موديل الجهاز</label>
+                            <select id="modelSelect" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-semibold focus:ring-2 focus:ring-brand-500 outline-none transition-all" disabled>
+                                <option value="">اختر الماركة أولاً...</option>
+                            </select>
+                        </div>
+
+                        <!-- Issue Select -->
+                        <div>
+                            <label class="block text-sm font-bold mb-2">نوع المشكلة / العطل</label>
+                            <select id="issueSelect" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-semibold focus:ring-2 focus:ring-brand-500 outline-none transition-all">
+                                <option value="">اختر نوع العطل...</option>
+                                <option value="screen" data-price="450">تغيير شاشة / باغة</option>
+                                <option value="battery" data-price="250">استبدال بطارية</option>
+                                <option value="charging" data-price="200">سوكت / سوفت الشحن</option>
+                                <option value="motherboard" data-price="600">عطل ماذر بورد / بور</option>
+                                <option value="water" data-price="350">تنظيف وأضرار ماء</option>
+                                <option value="software" data-price="150">سوفت وير وفك تشفير</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Personal Information -->
+                    <div class="grid md:grid-cols-2 gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <div>
+                            <label class="block text-sm font-bold mb-2">اسمك الكريم</label>
+                            <input type="text" id="custName" required placeholder="أدخل اسمك بالكامل" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-semibold focus:ring-2 focus:ring-brand-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-2">رقم الهاتف (واتساب)</label>
+                            <input type="tel" id="custPhone" required placeholder="01xxxxxxxxx" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-semibold focus:ring-2 focus:ring-brand-500 outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Price Estimate Box -->
+                    <div id="priceDisplayBox" class="hidden p-6 rounded-2xl bg-brand-50 dark:bg-brand-900/40 border border-brand-200 dark:border-brand-800 text-center">
+                        <span class="text-sm font-bold text-slate-600 dark:text-slate-300">التكلفة التقديرية للإصلاح:</span>
+                        <div class="text-3xl font-black text-brand-600 dark:text-blue-400 my-1">
+                            <span id="estimatedPrice">0</span> جنيه مصري
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">* السعر النهائي يتحدد بدقة بعد الفحص المجاني بالمحل.</p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full py-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-lg shadow-lg shadow-brand-600/30 transition-all">
+                        تأكيد حجز موعد الصيانة الان
+                    </button>
+                </form>
+
+                <!-- Status Message -->
+                <div id="bookingSuccess" class="hidden mt-6 p-4 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 text-center font-bold">
+                    <i class="fa-solid fa-circle-check text-xl ml-2"></i>
+                    تم تسجيل طلب حجزك بنجاح! سيتم التواصل معك عبر الواتساب لتأكيد الموعد.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracker Section -->
+    <section id="tracker" class="py-20 bg-white dark:bg-slate-900 transition-colors">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 font-bold text-xs">متابعة لحظية</span>
+                <h2 class="text-3xl font-extrabold mt-2">تتبع حالة جهازك بالمحل</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">أدخل رقم الفاتورة أو التذكرة التي استلمتها من محل سعد ستور</p>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="text" id="ticketInput" placeholder="أدخل رقم التذكرة (تجربة: 1001 أو 1002)" class="flex-1 px-5 py-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 font-bold focus:ring-2 focus:ring-brand-500 outline-none">
+                    <button id="trackBtn" class="px-8 py-3.5 rounded-xl bg-slate-900 dark:bg-brand-600 hover:bg-slate-800 dark:hover:bg-brand-700 text-white font-bold transition-all">
+                        استعلام عن الجهاز
+                    </button>
+                </div>
+
+                <!-- Track Result Display -->
+                <div id="trackResult" class="hidden mt-8 p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 space-y-6">
+                    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+                        <div>
+                            <span class="text-xs text-slate-400 block font-semibold">رقم التذكرة</span>
+                            <span id="resTicketNo" class="font-bold text-lg">#1001</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-semibold">نوع الجهاز</span>
+                            <span id="resDevice" class="font-bold">iPhone 13 Pro</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-semibold">تاريخ الاستلام</span>
+                            <span id="resDate" class="font-bold">اليوم، 02:30 م</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar / Steps -->
+                    <div>
+                        <span class="text-sm font-bold block mb-4 text-slate-700 dark:text-slate-300">مراحل صيانة الجهاز:</span>
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div id="step1" class="p-3 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-bold text-xs sm:text-sm">
+                                <i class="fa-solid fa-clipboard-check block text-lg mb-1"></i>
+                                1. تم الاستلام والفحص
+                            </div>
+                            <div id="step2" class="p-3 rounded-xl bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-bold text-xs sm:text-sm">
+                                <i class="fa-solid fa-gear fa-spin block text-lg mb-1"></i>
+                                2. جاري الصيانة
+                            </div>
+                            <div id="step3" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 font-bold text-xs sm:text-sm opacity-50">
+                                <i class="fa-solid fa-box-check block text-lg mb-1"></i>
+                                3. جاهز للتسليم
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="statusDetails" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300">
+                        ملاحظة الفني: تم فحص البوردة واستبدال أيس الشحن وجاري اختبار كفاءة البطارية.
+                    </div>
+                </div>
+
+                <!-- Error Box -->
+                <div id="trackError" class="hidden mt-6 p-4 rounded-xl bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 font-bold text-center text-sm">
+                    عذراً، رقم التذكرة غير صحيح. يرجى التأكد من الرقم المدون على الفاتورة.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="py-20 bg-slate-50 dark:bg-slate-950 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold mb-4">لماذا تختار سعد ستور؟</h2>
+                <p class="text-slate-600 dark:text-slate-400">نحن نضمن لك أفضل تجربة صيانة لهاتفك بفضل خبرتنا الواسعة والمعايير العالية التي نتبعها.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 text-center">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-blue-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">ضمان معتمد</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">نعطيك شهادة ضمان معتمدة تصل إلى 6 أشهر على جميع قطع الغيار وعمليات الصيانة.</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 text-center">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-[#check-double] fa-check-double"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">قطع غيار أصلية 100%</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">نستخدم فقط قطع الغيار الأصلية المعتمدة لضمان أداء الهاتف الفابريقة.</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 text-center">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-stopwatch"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">سرعة الإنجاز</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">معظم الأعمال مثل الشاشات والبطاريات تتم فوراً وأمامك خلال أقل من ساعة.</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 text-center">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-[#user-shield] fa-user-shield"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">سرية وأمان البيانات</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">نحافظ على سرية وتأمين بياناتك وصورك الشخصية على الهاتف بنسبة 100%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white dark:bg-slate-900 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold mb-4">آراء عملاء سعد ستور</h2>
+                <p class="text-slate-600 dark:text-slate-400">ثقة عملائنا هي سر نجاحنا واستمرارنا</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6 font-medium">"غيرت شاشة آيفون 12 برومكس في سعد ستور، التاتش والـ TrueTone شغالين ممتاذين جداً، والشغل تم في أقل من نص ساعة والتعامل راقي جداً."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold">أ</div>
+                        <div>
+                            <h4 class="font-bold text-sm">أحمد محمود</h4>
+                            <span class="text-xs text-slate-400">عميل صيانة أجهزة آبل</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6 font-medium">"تلفوني وقع في المايه وماكنش بيفتح خالص. الفني في المحل عمل صيانة للبوردة والموبايل رجع اشتغل بكل البيانات عليه! شكراً سعد ستور."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold">م</div>
+                        <div>
+                            <h4 class="font-bold text-sm">محمد حسن</h4>
+                            <span class="text-xs text-slate-400">عميل صيانة سامسونج</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">
+                    <div class="flex items-center gap-1 text-amber-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6 font-medium">"أسعارهم ممتازة مقارنة بقطع الغيار الأصلية والضمان اللي بيديوهولك. غيرت بطارية شياومي والأداء بقا زي أول ما اشتريته."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold">م</div>
+                        <div>
+                            <h4 class="font-bold text-sm">مريم خالد</h4>
+                            <span class="text-xs text-slate-400">عميلة صيانة شاومي</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact Section -->
+    <footer id="contact" class="bg-slate-900 text-white border-t border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1: Store info -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white text-xl font-bold">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        <span class="text-xl font-black">سعد ستور</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        مرجعك الأول لصيانة الهواتف الذكية وتوفير قطع الغيار الأصلية والإكسسوارات عالية الجودة.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2 text-lg">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-brand-600 transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-pink-600 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-emerald-600 transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-brand-400">روابط سريعة</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-300">
+                        <li><a href="#hero" class="hover:text-white transition-colors">الرئيسية</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">خدمات الصيانة</a></li>
+                        <li><a href="#estimator" class="hover:text-white transition-colors">حجز صيانة وتكلفة</a></li>
+                        <li><a href="#tracker" class="hover:text-white transition-colors">تتبع حالة جهازك</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Contact info -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-brand-400">تواصل معنا</h4>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-brand-500"></i>
+                            <span dir="ltr">+20 100 000 0000</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-emerald-500"></i>
+                            <span dir="ltr">+20 100 000 0000</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-brand-500"></i>
+                            <span>info@saadstore.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Working Hours & Location -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-brand-400">ساعات العمل والعنوان</h4>
+                    <p class="text-sm text-slate-300 mb-3 leading-relaxed">
+                        <i class="fa-solid fa-location-dot text-red-500 ml-2"></i>
+                        الفرع الرئيسي: الشارع التجاري، بجوار الميدان الرئيسي.
+                    </p>
+                    <div class="p-3 rounded-xl bg-slate-800/80 text-xs text-slate-300 space-y-1">
+                        <p><strong>السبت - الخميس:</strong> 10:00 صباحاً - 11:00 مساءً</p>
+                        <p><strong>الجمعة:</strong> 2:00 ظهراً - 11:00 مساءً</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-500">
+                جميع الحقوق محفوظة © 2026 لـ <strong>سعد ستور (Saad Store)</strong> - صيانة هواتف متخصصة.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Floating WhatsApp Button -->
+    <a href="https://wa.me/201000000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B3%D8%B9%D8%AF%20%D8%B3%D8%AA%D9%88%D8%B1%D9%8E%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B meD8%A7%D8%B1%20%D8%B9%D9%86%20%D8%B5%D9%8A%D8%A7%D9%86%D8%A9%20%D8%AC%D9%87%D8%A7%D8%B2%D9%8A" target="_blank" class="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-3xl shadow-xl hover:bg-emerald-600 hover:scale-110 transition-all">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Application JavaScript Logic -->
+    <script>
+        // Dark / Light Theme Toggle
+        const themeToggleBtn = document.getElementById('themeToggle');
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Dynamic Models Based on Brand Selection
+        const modelsData = {
+            apple: ['iPhone 15 Pro Max', 'iPhone 15 / 15 Pro', 'iPhone 14 Series', 'iPhone 13 Series', 'iPhone 12 / 11', 'موديل آخر آبل'],
+            samsung: ['Galaxy S24 / S23 Ultra', 'Galaxy S22 / S21', 'Galaxy A54 / A53 / A34', 'Galaxy Note Series', 'موديل آخر سامسونج'],
+            xiaomi: ['Xiaomi 13 / 12 Series', 'Redmi Note 13 / 12 Pro', 'Poco X5 / F5', 'موديل آخر شاومي'],
+            huawei: ['Huawei P50 / P40 Pro', 'Huawei Mate Series', 'Honor Series', 'موديل آخر هواوي'],
+            other: ['هاتف آخر']
+        };
+
+        const brandSelect = document.getElementById('brandSelect');
+        const modelSelect = document.getElementById('modelSelect');
+        const issueSelect = document.getElementById('issueSelect');
+        const priceDisplayBox = document.getElementById('priceDisplayBox');
+        const estimatedPriceEl = document.getElementById('estimatedPrice');
+
+        brandSelect.addEventListener('change', (e) => {
+            const brand = e.target.value;
+            modelSelect.innerHTML = '<option value="">اختر الموديل...</option>';
+            
+            if (brand && modelsData[brand]) {
+                modelSelect.disabled = false;
+                modelsData[brand].forEach(model => {
+                    const opt = document.createElement('option');
+                    opt.value = model;
+                    opt.textContent = model;
+                    modelSelect.appendChild(opt);
+                });
+            } else {
+                modelSelect.disabled = true;
+            }
+            calculatePrice();
+        });
+
+        issueSelect.addEventListener('change', calculatePrice);
+
+        function calculatePrice() {
+            const selectedOption = issueSelect.options[issueSelect.selectedIndex];
+            const basePrice = selectedOption ? selectedOption.getAttribute('data-price') : null;
+
+            if (basePrice && brandSelect.value) {
+                let multiplier = 1;
+                if (brandSelect.value === 'apple') multiplier = 1.4;
+                if (brandSelect.value === 'samsung') multiplier = 1.2;
+
+                const finalPrice = Math.round(parseInt(basePrice) * multiplier);
+                estimatedPriceEl.textContent = finalPrice;
+                priceDisplayBox.classList.remove('hidden');
+            } else {
+                priceDisplayBox.classList.add('hidden');
+            }
+        }
+
+        // Booking Form Submission
+        const bookingForm = document.getElementById('bookingForm');
+        const bookingSuccess = document.getElementById('bookingSuccess');
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            bookingSuccess.classList.remove('hidden');
+            bookingForm.reset();
+            priceDisplayBox.classList.add('hidden');
+            modelSelect.disabled = true;
+
+            setTimeout(() => {
+                bookingSuccess.classList.add('hidden');
+            }, 6000);
+        });
+
+        // Mock Repair Tracker System
+        const trackBtn = document.getElementById('trackBtn');
+        const ticketInput = document.getElementById('ticketInput');
+        const trackResult = document.getElementById('trackResult');
+        const trackError = document.getElementById('trackError');
+
+        const mockTickets = {
+            '1001': {
+                device: 'iPhone 13 Pro',
+                date: 'اليوم، 02:30 م',
+                step: 2,
+                note: 'ملاحظة الفني: جاري تركيب شاشة أصلية واختبار التاتش والـ TrueTone.'
+            },
+            '1002': {
+                device: 'Samsung S22 Ultra',
+                date: 'أمس، 05:00 م',
+                step: 3,
+                note: 'تم الإصلاح واختبار الهاتف بالكامل بنجاح. الجهاز جاهز للتسليم في المحل.'
+            }
+        };
+
+        trackBtn.addEventListener('click', () => {
+            const ticketNo = ticketInput.value.trim();
+            trackResult.classList.add('hidden');
+            trackError.classList.add('hidden');
+
+            if (mockTickets[ticketNo]) {
+                const data = mockTickets[ticketNo];
+                document.getElementById('resTicketNo').textContent = '#' + ticketNo;
+                document.getElementById('resDevice').textContent = data.device;
+                document.getElementById('resDate').textContent = data.date;
+                document.getElementById('statusDetails').textContent = data.note;
+
+                // Update Step UI
+                const s1 = document.getElementById('step1');
+                const s2 = document.getElementById('step2');
+                const s3 = document.getElementById('step3');
+
+                s1.className = "p-3 rounded-xl font-bold text-xs sm:text-sm bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300";
+                
+                if(data.step >= 2) {
+                    s2.className = "p-3 rounded-xl font-bold text-xs sm:text-sm bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300";
+                } else {
+                    s2.className = "p-3 rounded-xl font-bold text-xs sm:text-sm bg-slate-100 dark:bg-slate-800 text-slate-400 opacity-50";
+                }
+
+                if(data.step >= 3) {
+                    s3.className = "p-3 rounded-xl font-bold text-xs sm:text-sm bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300";
+                } else {
+                    s3.className = "p-3 rounded-xl font-bold text-xs sm:text-sm bg-slate-100 dark:bg-slate-800 text-slate-400 opacity-50";
+                }
+
+                trackResult.classList.remove('hidden');
+            } else {
+                trackError.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
